@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DigInteligencia.Models.TaskToDoList>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-6 p-2">
+        <div class="card">
+            <div class="card-header">
+                @Html.DisplayFor(modelItem => item.Name)
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    @if (item.TaskToDo.Count > 0){
+                    <ul class="list-group list-group-flush">
+                        @foreach (var task in item.TaskToDo)
+                        {
+                        <li class="list-group-item">
+                            @Html.DisplayFor(modelItem => task.Description)
+                            <div class="float-right">
+                                <button tasktodolistid="@Html.DisplayFor(modelItem => item.ID)" tasktodoid="@Html.DisplayFor(modelItem => task.ID)" class="btnEditTask btn btn-sm btn-info"><i class="fa fa-pencil-alt"></i></button>
+                                <button tasktodoid="@Html.DisplayFor(modelItem => task.ID)" class="btnDeleteTask btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                    } else {
+                        <i>Without Tasks</i>
+                    }
+                </p>
+                <a href="#" class="btnCreateTask btn btn-primary" tasktodolistid="@Html.DisplayFor(modelItem => item.ID)"><i class="fa fa-check-square">&nbsp;</i>Add New Task</a>
+            </div>
+        </div>
+    </div>
+}

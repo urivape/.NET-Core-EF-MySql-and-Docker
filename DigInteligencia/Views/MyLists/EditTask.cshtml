@@ -1,0 +1,56 @@
+﻿@model DigInteligencia.Models.TaskToDo
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>New Task</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <form id="fEditTask" class="">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Description</label>
+                            <input id="tbDescription" class="form-control" autocomplete="off" value="@Html.DisplayFor(modelItem => modelItem.Description)" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-primary">
+                                <i class="fa fa-pencil-alt">&nbsp;</i> Edit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script>
+    jQuery().ready(function () {
+        jQuery("#fEditTask").on("submit", function () {
+            var tbDescription = jQuery("#tbDescription").val();
+            if (tbDescription != "") {
+                jQuery.ajax({
+                    url: '@Url.Action("PostTaskToDo", "TaskToDo")' + '/' + TaskToDoIDSelected,
+                    contentType: 'application/json',
+                    type: 'PUT',
+                    data: "{ ID: " + TaskToDoIDSelected + ", TaskToDoListID: " + TaskToDoListIDSelected + ", Description: '" + tbDescription + "' }",
+                    dataType: 'json',
+                    success: function (data) {
+                        jQuery("#FModal").modal("hide");
+                        LoadLists();
+                    },
+                    error: function (a, b, c) {
+                        console.log("Error to try to create new Task. Try again later.");
+                    }
+                });
+            }
+            return false;
+        });
+    });
+</script>

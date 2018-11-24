@@ -1,0 +1,38 @@
+﻿@model DigInteligencia.Models.TaskToDo
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Delete Task</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    Are you sure to want delete this task?
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button id="btnDeleteTaskSelected" type="button" class="btn btn-primary">Delete</button>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery("#btnDeleteTaskSelected").on("click", function () {
+        jQuery.ajax({
+            url: '@Url.Action("DeleteTaskToDo", "TaskToDo")',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                jQuery('#FModal').modal("hide");
+                LoadLists();
+            },
+            error: function (a, b, c) {
+                console.log("Error to delete Task. Try again later.");
+            }
+        });
+    });
+</script>

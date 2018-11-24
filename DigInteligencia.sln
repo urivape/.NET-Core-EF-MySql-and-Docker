@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigInteligencia", "DigInteligencia\DigInteligencia.csproj", "{757C59A8-617D-467C-BE77-77235697D60D}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{513A6A9F-A72E-47F4-8EFE-DA69E41A96FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{757C59A8-617D-467C-BE77-77235697D60D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{757C59A8-617D-467C-BE77-77235697D60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{757C59A8-617D-467C-BE77-77235697D60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{757C59A8-617D-467C-BE77-77235697D60D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513A6A9F-A72E-47F4-8EFE-DA69E41A96FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513A6A9F-A72E-47F4-8EFE-DA69E41A96FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513A6A9F-A72E-47F4-8EFE-DA69E41A96FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513A6A9F-A72E-47F4-8EFE-DA69E41A96FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C56FD42F-74DB-42D1-8A1F-A5B8CFF3C065}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,5 @@
+CREATE DATABASE webapi;
+CREATE USER 'urivape'@'localhost' IDENTIFIED BY '12345';
+GRANT ALL PRIVILEGES ON webapi.* TO 'urivape'@'localhost';
+FLUSH PRIVILEGES;
+QUIT

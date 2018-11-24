@@ -1,0 +1,38 @@
+services:
+  database:
+    command: mysqld --user=root --default-authentication-plugin=mysql_native_password
+    container_name: database.dev
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: webapi
+      MYSQL_PASSWORD: '12345'
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: urivape
+    image: mysql/mysql-server:5.7
+    ports:
+    - published: 12345
+      target: 3306
+    volumes:
+    - /c/Users/urivape/source/repos/DigInteligencia/dbcreation.sql:/tmp/dbcreation.sql:rw
+    - /c/Users/urivape/source/repos/DigInteligencia/import.sh:/tmp/import.sh:rw
+  diginteligencia:
+    build:
+      context: C:\Users\urivape\source\repos\DigInteligencia
+      dockerfile: DigInteligencia/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '44396'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      MYSQL_SERVER_NAME: database
+    image: diginteligencia
+    links:
+    - database
+    ports:
+    - published: 64665
+      target: 80
+    - published: 44396
+      target: 443
+    volumes:
+    - /c/Users/urivape/AppData/Roaming/ASP.NET/Https:/root/.aspnet/https:ro
+    - /c/Users/urivape/AppData/Roaming/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
