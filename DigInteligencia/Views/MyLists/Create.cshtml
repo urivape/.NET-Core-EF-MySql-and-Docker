@@ -1,4 +1,4 @@
-﻿@model DigInteligencia.Models.TaskToDoList
+@model DigInteligencia.Models.TaskToDoList
 
 <div class="modal-dialog">
     <div class="modal-content">
@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-outline-primary">
-                                <i class="fa fa-disk">&nbsp;</i> Create
+                                <i class="fa fa-plus">&nbsp;</i> Create
                             </button>
                         </div>
                     </form>
@@ -36,7 +36,7 @@
             var tbName = jQuery("#tbName").val();
             if (tbName != "") {
                 jQuery.ajax({
-                    url: '@Url.Action("AddTaskToDoList", "TaskToDoList")',
+                    url: '@Url.Action("PostTaskToDoList", "TaskToDoList")',
                     contentType: 'application/json',
                     type: 'POST',
                     data: "{ Name: '" + tbName + "' }",
